@@ -41,11 +41,11 @@ jobs:
         env:
           AHDX_IP_CONTENT: ${{ secrets.AHDX_IP_CONFIG }}
         run: |
-          printf "%s" "$AHDX_IP_CONTENT" > ip/Anhui_dianxin.txt_ip_config.txt
+          printf "%s" "$AHDX_IP_CONTENT" > ip/Anhui_dianxin_ip_config.txt
           echo "====调试1：检查文件是否存在===="
-          ls -la ip/Anhui_dianxin.txt_ip_config.txt
+          ls -la ip/Anhui_dianxin_ip_config.txt
           echo "====调试2：统计文件行数===="
-          wc -l ip/Anhui_dianxin.txt_ip_config.txt
+          wc -l ip/Anhui_dianxin_ip_config.txt
 
       # ========== 生成频道模板文件到 template/ 目录【新增】==========
       - name: 临时生成安徽频道模板(Secret保存，不进仓库)
@@ -53,10 +53,10 @@ jobs:
           AHDX_TPL_CONTENT: ${{ secrets.AHDX_TPL_CONFIG }}
         run: |
           mkdir -p template
-          printf "%s" "$AHDX_TPL_CONTENT" > template/template_Anhui_dianxin.txt.txt
+          printf "%s" "$AHDX_TPL_CONTENT" > template/template_Anhui_dianxin.txt
           echo "====检查模板文件===="
           ls -la template/
-          wc -l template/template_Anhui_dianxin.txt.txt
+          wc -l template/template_Anhui_dianxin.txt
 
       # ==========【清理ip目录旧good_*文件，防止残留干扰测速】==========
       - name: 清理ip目录历史good_*旧文件
@@ -102,7 +102,7 @@ jobs:
           > zubo.txt
           # 自定义城市顺序，新增城市直接追加一行
           city_list=(
-            "txt/Anhui_dianxin.txt.txt"
+            "txt/Anhui_dianxin.txt"
             #"txt/Beijing_dianxin.txt"
             #"txt/Guangzhou_dianxin.txt"
           )
